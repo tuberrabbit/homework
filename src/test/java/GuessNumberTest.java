@@ -1,10 +1,11 @@
-import java.util.HashSet;
-
-import jdk.nashorn.internal.objects.NativeUint8Array;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
+import org.mockito.Mock;
+import org.mockito.mock.*;
+
+
+import java.util.HashSet;
 
 public class GuessNumberTest {
     public GuessNumberTest() {
@@ -82,6 +83,8 @@ public class GuessNumberTest {
 
     @Test
     public void should_get_4A0B_from_user_input_1234_into_games(){
-        
+        String userinput = "1234";
+
+
     }
 }
