@@ -1,29 +1,35 @@
-/**
- * Created by apprentice on 15-11-22.
- */
+
 import java.util.Random;
 
-public class Numbers {
+public class GuessNumbers {
     private String numbers;
 
-    public Numbers(String i) {
+    public GuessNumbers(String i) {
         this.numbers = i;
+    }
+
+    public GuessNumbers() {
+        this.numbers = new String();
     }
 
     public String getNumbers() {
         return this.numbers;
     }
 
-    public String compares(Numbers another) {
+    public void setNumbers(String numbers) {
+        this.numbers = numbers;
+    }
+
+    public String compares(GuessNumbers another) {
         String compareto = another.getNumbers();
-        Integer timesA = Integer.valueOf(0);
-        Integer timesB = Integer.valueOf(0);
+        Integer timesA = 0;
+        Integer timesB = 0;
 
         for(int results = 0; results < this.numbers.length(); ++results) {
             if(this.numbers.charAt(results) == compareto.charAt(results)) {
-                timesA = Integer.valueOf(timesA.intValue() + 1);
+                ++timesA;
             } else if(compareto.indexOf(this.numbers.charAt(results)) != -1) {
-                timesB = Integer.valueOf(timesB.intValue() + 1);
+                ++timesB;
             }
         }
 
@@ -35,22 +41,22 @@ public class Numbers {
         return result.toString();
     }
 
-    public static Numbers generator() {
+    public GuessNumbers generator() {
         Random random = new Random();
         StringBuilder result = new StringBuilder();
 
         for(int index = 0; index < 4; ++index) {
-            Integer temp = Integer.valueOf(random.nextInt(10));
+            Integer temp = random.nextInt(10);
             if(result.indexOf(temp.toString()) == -1) {
                 result.append(temp);
             } else {
                 while(result.indexOf(temp.toString()) != -1) {
-                    temp = Integer.valueOf(random.nextInt(10));
+                    temp = random.nextInt(10);
                 }
                 result.append(temp);
             }
         }
 
-        return new Numbers(result.toString());
+        return new GuessNumbers(result.toString());
     }
 }
